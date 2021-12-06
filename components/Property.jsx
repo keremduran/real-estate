@@ -30,10 +30,10 @@ const Property = ({
             cursor="pointer"
         >
             <Box>
-                <Image
+                <img
                     src={coverPhoto ? coverPhoto.url : DefaultImage}
                     width={400}
-                    height={260}
+                    height={280}
                 />
             </Box>
             <Box w="full">
@@ -58,7 +58,7 @@ const Property = ({
                 <Flex
                     alignItems="center"
                     p="1"
-                    justifyContent="space-between"
+                    justifyContent="space-around"
                     w="250px"
                     color="blue.400"
                 >
