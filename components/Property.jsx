@@ -17,23 +17,23 @@ const Property = ({
         area,
         agency,
         isVerified,
-        externalId,
+        externalID,
     },
 }) => (
-    <Link href={`/property/${externalId}`} passHref>
+    <Link href={`/property/${externalID}`} passHref>
         <Flex
             flexWrap="wrap"
             w="420px"
             p="5"
-            paddingTop="0"
+            paddingTop="0px"
             justifyContent="flex-start"
             cursor="pointer"
         >
             <Box>
-                <img
+                <Image
+                    src={coverPhoto ? coverPhoto.url : DefaultImage}
                     width={400}
                     height={260}
-                    src={coverPhoto ? coverPhoto.url : DefaultImage}
                 />
             </Box>
             <Box w="full">
@@ -47,29 +47,28 @@ const Property = ({
                             {isVerified && <GoVerified />}
                         </Box>
                         <Text fontWeight="bold" fontSize="lg">
-                            AED {millify(price)}
+                            AED {price}
                             {rentFrequency && `/${rentFrequency}`}
                         </Text>
-                        <Box>
-                            <Avatar size="sm" src={agency?.logo?.url} />
-                        </Box>
-                        <Flex
-                            alignItems="center"
-                            p="1"
-                            justifyContent="space-between"
-                            w="250px"
-                            color="blue.400"
-                        >
-                            {rooms} <FaBed /> | {baths} <FaBath /> |{' '}
-                            {millify(area)} sqft <BsGridFill />
-                            <Text fontSize="lg">
-                                {title.length > 30
-                                    ? `${title.substring(0, 30)}...`
-                                    : title}
-                            </Text>
-                        </Flex>
                     </Flex>
+                    <Box>
+                        <Avatar size="sm" src={agency?.logo?.url}></Avatar>
+                    </Box>
                 </Flex>
+                <Flex
+                    alignItems="center"
+                    p="1"
+                    justifyContent="space-between"
+                    w="250px"
+                    color="blue.400"
+                >
+                    {rooms}
+                    <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft{' '}
+                    <BsGridFill />
+                </Flex>
+                <Text fontSize="lg">
+                    {title.length > 30 ? title.substring(0, 30) + '...' : title}
+                </Text>
             </Box>
         </Flex>
     </Link>
