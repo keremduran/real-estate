@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/Image';
-import { Box, Flex, Text, Avatar } from '@chakra-ui/react';
+import { Box, Flex, Text, Avatar, Image } from '@chakra-ui/react';
 import { FaBed, FaBath } from 'react-icons/fa';
 import { BsGridFill } from 'react-icons/bs';
 import { GoVerified } from 'react-icons/go';
@@ -30,7 +29,7 @@ const Property = ({
             cursor="pointer"
         >
             <Box>
-                <img
+                <Image
                     src={coverPhoto ? coverPhoto.url : DefaultImage}
                     width={400}
                     height={280}
