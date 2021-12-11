@@ -11,7 +11,7 @@ import { FcMenu, FcHome, FcAbout } from 'react-icons/fc';
 import { BsSearch } from 'react-icons/bs';
 import { FiKey } from 'react-icons/fi';
 
-const MobileNavbar = (props) => (
+const MobileNavbar = () => (
     <Box
         display={{ base: 'flex', lg: 'none' }}
         mt={{ base: 4, md: 0 }}
