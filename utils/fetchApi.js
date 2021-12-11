@@ -6,6 +6,7 @@ export const baseUrl = 'https://bayut.p.rapidapi.com';
 export const fetchApi = async (url) => {
   const cachedData = cache.get(url);
   if (cachedData) {
+    console.log("\n\nCached Data Fetched:\n",url);
     return cachedData;
   }
 
