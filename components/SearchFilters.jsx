@@ -1,17 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import {
-    Flex,
-    Select,
-    Box,
-    Text,
-    Input,
-    InputGroup,
-    InputRightElement,
-    Spinner,
-    Skeleton,
-    Icon,
-    Button,
-} from '@chakra-ui/react';
+import { Flex, Select, Box, Input, Skeleton, Button } from '@chakra-ui/react';
 import { filterData, getFilterValues } from '../utils/filterData';
 import { fetchApi, baseUrl } from '../utils/fetchApi';
 import router from 'next/router';
@@ -19,7 +7,6 @@ import router from 'next/router';
 const SearchFilters = () => {
     const [filters, setFilters] = useState(filterData);
     const [loading, setLoading] = useState(false);
-    const [showLocations, setShowLocations] = useState(false);
     const [locationQuery, setLocationQuery] = useState();
     const [locationData, setLocationData] = useState([]);
     const locationInput = useRef(null);
@@ -51,7 +38,9 @@ const SearchFilters = () => {
         const values = getFilterValues(filterValues);
 
         values.forEach((item) => {
-            query[item.name] = item.value;
+            if (item.value && filterValues?.[item.name]) {
+                query[item.name] = item.value;
+            }
         });
 
         router.push({ pathname, query });
@@ -97,23 +86,25 @@ const SearchFilters = () => {
                 />
                 <Skeleton isLoaded={!loading}>
                     <Select
-                    placeholder={`Select Location (${locationData?.length})`}
-                    w="15rem"
-                    p="2"
-                    onChange={(e) =>
-                        searchProperties({
-                            locationExternalIDs: e.target.value,
-                        })
-                    }
-                >
-                    {locationData?.map((location) => (
-                        <option key={location.name} value={location.externalID}>
-                            {location.name}
-                        </option>
-                    ))}
-                </Select>
+                        placeholder={`Select Location (${locationData?.length})`}
+                        w="15rem"
+                        p="2"
+                        onChange={(e) =>
+                            searchProperties({
+                                locationExternalIDs: e.target.value,
+                            })
+                        }
+                    >
+                        {locationData?.map((location) => (
+                            <option
+                                key={location.name}
+                                value={location.externalID}
+                            >
+                                {location.name}
+                            </option>
+                        ))}
+                    </Select>
                 </Skeleton>
-                
             </Flex>
         </Flex>
     );
