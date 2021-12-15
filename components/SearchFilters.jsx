@@ -18,7 +18,6 @@ const SearchFilters = () => {
     useEffect(() => {
         if (locationQuery) {
             const fetchData = async () => {
-                console.log('FETCHDATA');
                 setLoading(true);
                 const data = await fetchApi(
                     `${baseUrl}/auto-complete?query=${locationQuery}`
