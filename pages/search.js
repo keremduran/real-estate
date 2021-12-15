@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Flex, Box, Text, Icon } from '@chakra-ui/react';
+import { Flex, Box, Text, Icon, Center } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 import SearchFilters from '../components/SearchFilters';
 import Property from '../components/Property';
@@ -10,7 +10,7 @@ const Search = ({ properties }) => {
     const [searchFilters, setSearchFilters] = useState(false);
     const router = useRouter();
     useEffect(() => {
-        console.log("UF");
+        console.log('UF');
     }, [properties]);
     return (
         <Box>
@@ -30,14 +30,16 @@ const Search = ({ properties }) => {
                 <Icon paddingLeft="2" w="7" as={BsFilter} />
             </Flex>
             {searchFilters && <SearchFilters />}
-            <Text fontSize="2xl" p="4" fontWeight="bold">
-                Properties {router.query.purpose}
-            </Text>
-            <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
+            <Center>
+                <Text fontSize="3xl" p="4" fontWeight="bold">
+                    Properties {router.query.purpose}
+                </Text>
+            </Center>
+            <Center flexWrap="wrap">
                 {properties.map((property) => (
                     <Property property={property} key={property.id} />
                 ))}
-            </Flex>
+            </Center>
             {properties.length === 0 && (
                 <Flex
                     justifyContent="center"
@@ -71,7 +73,7 @@ export async function getServerSideProps({ query }) {
 
     return {
         props: {
-            properties: data?.hits
+            properties: data?.hits,
         },
     };
 }

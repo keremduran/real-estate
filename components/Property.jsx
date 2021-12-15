@@ -31,6 +31,7 @@ const Property = ({
             <Box>
                 <Image
                     src={coverPhoto ? coverPhoto.url : DefaultImage}
+                    borderRadius='20%'
                     width={400}
                     height={280}
                 />
@@ -65,8 +66,11 @@ const Property = ({
                     <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft{' '}
                     <BsGridFill />
                 </Flex>
-                <Text fontSize="lg">
+                {/* <Text fontSize="lg">
                     {title.length > 30 ? title.substring(0, 30) + '...' : title}
+                </Text> */}
+                <Text fontSize="lg" isTruncated>
+                    {title}
                 </Text>
             </Box>
         </Flex>
