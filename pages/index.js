@@ -15,7 +15,7 @@ export const Banner = ({
     imageUrl,
 }) => (
     <Center flexWrap="wrap" m="10">
-        <Image alt="Banner img" src={imageUrl} width={500} height={300} />
+        <Image alt="Banner img" src={imageUrl} placeholder="blur" blurDataURL={imageUrl} width={500} height={300} />
         <Box
             w={400}
             h={300}
